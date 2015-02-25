@@ -102,8 +102,8 @@ void Maze::processSolution(StackLinked<Cell>* stack)
    //DO THIS
    //the stack has the solution path stored
 	NextNode<Cell>* test = stack->peek();
-   while(test!=NULL)//while the
-   {
+   while(test!=NULL)//while the NEXT NODE IS NOT null that wasn't supposed to be in caps
+   {//how do i make stuff green. set something to 4???
       //get the next cell from the stack
 	   //make stuff green, THEN do that
 	   test = test->getNext();
