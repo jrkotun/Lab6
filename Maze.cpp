@@ -101,12 +101,12 @@ void Maze::processSolution(StackLinked<Cell>* stack)
 {
    //DO THIS
    //the stack has the solution path stored
-	NextNode<Cell>* test = stack->peek();
+	Cell* test = stack->peek();
    while(test!=NULL)//until you reach the bottom of the stack
       //get the next cell from the stack
 	   
-	   maze->setElement(test->item->getRow(), test->item->getCol(), PATH);//make stuff green
-	   test = test->getNext();
+	   maze->setElement(test->getRow(), test->getCol(), PATH);//make stuff green
+	   test = test->nextCell();
       
       //update the maze location to PATH
 
@@ -149,15 +149,15 @@ bool Maze::traverse()
 
       //DO THIS
       //get the row and col from curr_cell
-      int row = 
-      int col = 
-
+	  int row = curr_cell->getRow();
+	  int col = curr_cell->getCol();
       //check that the current maze location corresponds to SPACE, otherwise delete it
-      if (                                           )
+      if (getElement(row, col)==SPACE)
       {
          //update the maze location to TRIED
+		  maze->setElement(row, col, TRIED);
          //put the cell on the stack (move forward through the maze)
-
+		  stack.push(curr_cell);
 
 
 
@@ -171,7 +171,7 @@ bool Maze::traverse()
       {
          //DO THIS
          //delete the cell
-
+		  delete curr_cell;
 
       }
    }
