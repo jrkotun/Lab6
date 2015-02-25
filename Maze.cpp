@@ -1,9 +1,10 @@
 #include "Maze.h"
 #include "Color.h"
 #include "Rect.h"
-
+#include "StackLinked.h"
 #include <windows.h>  //for the sleep function
-
+#include "NextNode.h"
+#include "Cell.h"
 #include <iostream>
 using namespace std;
 
@@ -100,11 +101,12 @@ void Maze::processSolution(StackLinked<Cell>* stack)
 {
    //DO THIS
    //the stack has the solution path stored
-   while(                    )
+	NextNode<Cell>* test = stack->peek();
+   while(test!=NULL)//while the
    {
       //get the next cell from the stack
-
-
+	   //make stuff green, THEN do that
+	   test = test->getNext();
       
       //update the maze location to PATH
 

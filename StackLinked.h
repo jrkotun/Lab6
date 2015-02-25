@@ -69,9 +69,9 @@ T* StackLinked<T>::peek()
 {
    T* item = NULL;
    //DO THIS
-
-
-
+   item = top->getItem();
+   return item;
+   //ok
 
 
 }
@@ -80,22 +80,31 @@ template < class T >
 void StackLinked<T>::push(T* item)
 {
    //DO THIS
-
-
-
-
+	if (sze == 0)
+		top = item;
+	else
+	{
+		item->getNext() = top;
+		top = item;
+	}
+	//i essentially just copied this from our project in 2100
+	//who knows what will happen
 }
 
 template < class T >
-T* StackLinked<T>::pop()
+T* StackLinked<T>::pop()//this might be entirely wrong idk. but I love copy&paste
 {
    if (sze == 0) return NULL;
 
    //DO THIS
-
-
-
-
+   NextNode<T>* curr = top;
+   NextNode<T>* prev = NULL;
+   prev = curr;
+   curr = curr->getNext();
+   prev->setNext(NULL);
+   //delete prev;
+   top = curr;
+   return prev;
 }
 
 #endif
