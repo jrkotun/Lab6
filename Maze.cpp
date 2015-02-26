@@ -47,17 +47,16 @@ Cell* Maze::processBackTrack(StackLinked<Cell>* stack)
    //top_cell is NULL if the stack is empty
    //top_cell's direction is DEAD_END if you need to keep backtracking
 
-   while (                                        )  //need to back track
+   while (top_cell != NULL&&top_cell==DEAD_END)  //need to back track
    {
-      
-
-
+	   int row = top_cell->getRow();
+	   int col = top_cell->getCol();
       //remove the cell and set the maze location to BACKTRACK (the maze is a Matrix)
-
-
+	    stack->pop();
+		maze->setElement(row, col, BACKTRACK);
 
       //look at the next cell
-
+		top_cell = top_cell->nextCell();
 
 
 
@@ -73,27 +72,19 @@ bool Maze::isSolved(Cell* curr_cell, StackLinked<Cell>* stack)
 {
    //DO THIS
    //get row and col from curr_cell
-
-
-
-   //have you solved the maze? (check that we are at the bottom right maze location and that it is a SPACE
-   if (                                                          )  
+	int row = curr_cell->getRow();
+	int col = curr_cell->getCol();
+	//have you solved the maze? (check that we are at the bottom right maze location and that it is a SPACE
+	if (		&&getElement(row, col) == SPACE)//idk the first condition
    {
-
-
       //set the maze location to TRIED
-
-
-      //push curr_cell
-
-
-      gui->update();
-      //return the appropriate boolean
-
-   }
-
-
-   //return the appropriate boolean
+	   maze->setElement(row, col, TRIED);
+	   //push curr_cell
+	   stack->push(curr_cell);
+       gui->update();
+	   return true;
+   }//return the appropriate boolean
+   return false;
 }
 
 //backing through the maze, setting the solution color to PATH
@@ -103,16 +94,12 @@ void Maze::processSolution(StackLinked<Cell>* stack)
    //the stack has the solution path stored
 	Cell* test = stack->peek();
    while(test!=NULL)//until you reach the bottom of the stack
-      //get the next cell from the stack
-	   
-	   maze->setElement(test->getRow(), test->getCol(), PATH);//make stuff green
-	   test = test->nextCell();
-      
-      //update the maze location to PATH
-
-
-
-      gui->update();
+   {
+		//update the maze location to PATH
+		maze->setElement(test->getRow(), test->getCol(), PATH);
+		test = test->nextCell();
+		//get the next cell from the stack
+		gui->update();
    }
 }
 
