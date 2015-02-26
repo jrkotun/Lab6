@@ -47,19 +47,16 @@ Cell* Maze::processBackTrack(StackLinked<Cell>* stack)
    //top_cell is NULL if the stack is empty
    //top_cell's direction is DEAD_END if you need to keep backtracking
 
-   while (top_cell != NULL&&top_cell==DEAD_END)  //need to back track
+   while (top_cell != NULL&&top_cell==DEAD_END)  //breaks if you no longer need to backtrack or if you've reached the end
    {
-	   int row = top_cell->getRow();
-	   int col = top_cell->getCol();
+	    int row = top_cell->getRow();
+	    int col = top_cell->getCol();
       //remove the cell and set the maze location to BACKTRACK (the maze is a Matrix)
 	    stack->pop();
 		maze->setElement(row, col, BACKTRACK);
 
       //look at the next cell
 		top_cell = top_cell->nextCell();
-
-
-
 
       Sleep(75);      //slow down the maze traversal
       gui->update();  //update whenever the color of a cell has been changed
