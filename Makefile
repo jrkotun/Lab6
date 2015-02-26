@@ -23,7 +23,7 @@ Project: 	$(FILES)
 Cell.o:		Cell.h Cell.cpp
 			$(COMPILE) Cell.cpp
 
-Maze.o:		Maze.h Maze.cpp
+Maze.o:		Maze.h Maze.cpp StackLinked.h
 			$(COMPILE) Maze.cpp
 
 MazeGUI.o:	MazeGUI.h MazeGUI.cpp
