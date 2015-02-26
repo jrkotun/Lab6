@@ -65,7 +65,7 @@ Cell* Maze::processBackTrack(StackLinked<Cell>* stack)
       Sleep(75);      //slow down the maze traversal
       gui->update();  //update whenever the color of a cell has been changed
    }
-
+   //make sure top_cell==NULL if there's no solution(it backtracks all the way to the beginning) -Amber
    return top_cell;
 }
 
@@ -102,14 +102,13 @@ void Maze::processSolution(StackLinked<Cell>* stack)
    //DO THIS
    //the stack has the solution path stored
 	NextNode<Cell>* test = stack->peek();
-   while(test!=NULL)//while the NEXT NODE IS NOT null that wasn't supposed to be in caps
-   {//how do i make stuff green. set something to 4???
+   while(test!=NULL)//until you reach the bottom of the stack
       //get the next cell from the stack
-	   //make stuff green, THEN do that
+	   
+	   maze->setElement(test->item->getRow(), test->item->getCol(), PATH);//make stuff green
 	   test = test->getNext();
       
       //update the maze location to PATH
-
 
 
 
