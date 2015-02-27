@@ -69,8 +69,12 @@ T* StackLinked<T>::peek()
 {
    T* item = NULL;
    //DO THIS
-   item = top->getItem();
-   return item;
+   if (sze != 0)
+   {
+	item = top->getItem();
+    return item;
+   }
+   
 }
 
 template < class T >
