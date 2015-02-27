@@ -47,7 +47,7 @@ Cell* Maze::processBackTrack(StackLinked<Cell>* stack)
    //top_cell is NULL if the stack is empty
    //top_cell's direction is DEAD_END if you need to keep backtracking
 
-   while (top_cell != NULL && top_cell==DEAD_END)  //breaks if you no longer need to backtrack or if you've reached the end
+   while (top_cell != NULL && top_cell->getDir()==DEAD_END)  //breaks if you no longer need to backtrack or if you've reached the end
    {
 	    int row = top_cell->getRow();
 	    int col = top_cell->getCol();
@@ -89,13 +89,12 @@ void Maze::processSolution(StackLinked<Cell>* stack)
 {
    //DO THIS
    //the stack has the solution path stored
-	Cell* test = stack->peek();
-   while(test!=NULL)//until you reach the bottom of the stack
+	while (!stack->isEmpty())
    {
+		//get the next cell from the stack
+		Cell* test = stack->pop();
 		//update the maze location to PATH
 		maze->setElement(test->getRow(), test->getCol(), PATH);
-		test = test->nextCell();
-		//get the next cell from the stack
 		gui->update();
    }
 }

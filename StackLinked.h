@@ -78,32 +78,20 @@ void StackLinked<T>::push(T* item)
 {
    //DO THIS
 	NextNode<T>* itemNode = new NextNode<T>(item);
-	if (sze == 0)
-		top = itemNode;
-	else
-	{
-		itemNode->setNext(top);
-		top = itemNode;
-	}
+	itemNode->setNext(top);
+	top = itemNode;
 	sze++;
-	//i essentially just copied this from our project in 2100
-	//who knows what will happen
 }
 
 template < class T >
-T* StackLinked<T>::pop()//this might be entirely wrong idk. but I love copy&paste
+T* StackLinked<T>::pop()
 {
    if (sze == 0) return NULL;
 
    //DO THIS
    NextNode<T>* curr = top;
-   //NextNode<T>* prev = NULL;
-   //prev = curr;
    top = top->getNext();
-   //prev->setNext(NULL);
-   //delete prev;
-   top = curr;
-   return prev;
+   return curr->getItem();
 }
 
 #endif
