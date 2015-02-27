@@ -91,6 +91,7 @@ T* StackLinked<T>::pop()
    //DO THIS
    NextNode<T>* curr = top;
    top = top->getNext();
+   sze--;
    return curr->getItem();
 }
 

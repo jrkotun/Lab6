@@ -93,9 +93,11 @@ void Maze::processSolution(StackLinked<Cell>* stack)
    {
 		//get the next cell from the stack
 		Cell* test = stack->pop();
+		delete test;
 		//update the maze location to PATH
 		maze->setElement(test->getRow(), test->getCol(), PATH);
 		gui->update();
+		cout << "test\n";
    }
 }
 
@@ -158,7 +160,7 @@ bool Maze::traverse()
    {
       cout << "No solution." << endl;
    }
-
+   
    return done;
 }
 
