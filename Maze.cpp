@@ -97,7 +97,6 @@ void Maze::processSolution(StackLinked<Cell>* stack)
 		//update the maze location to PATH
 		maze->setElement(test->getRow(), test->getCol(), PATH);
 		gui->update();
-		cout << "test\n";
    }
 }
 
@@ -147,7 +146,6 @@ bool Maze::traverse()
          //DO THIS
          //delete the cell
 		  delete curr_cell;
-
       }
    }
 
